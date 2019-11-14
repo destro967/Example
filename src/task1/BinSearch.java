@@ -15,39 +15,30 @@ public class BinSearch {
         }
 
         Arrays.sort(array);
-
         System.out.println(Arrays.toString(array));
 
         Scanner scanner = new Scanner(System.in);
 
-        int left = 0;
-        int right = array.length-1;
         int element = scanner.nextInt();
 
-        if(element < array[left]) {
-            System.out.println("-1");
-            return;
-        }
-        if (element > array[right]) {
-            System.out.println(array.length - 1);
-            return;
-        }
-        int midle;
-        while (right != left){
-            midle  = (right + left)/2+1;
+        int low = 0;
+        int high = array.length - 1;
 
-            if(array[midle] == element){
-                System.out.println(midle);
-                return;
-            }else{
-                if (array[midle] < element)
-                    left = midle + 1;
-                else
-                    right = midle - 1;
+        while(low <= high) {
+            int mid = low + high >>> 1;
+            int midVal = array[mid];
+            if (midVal < element) {
+                low = mid + 1;
+            } else {
+                if (midVal <= element) {
+                    System.out.println(mid);;
+                }
+
+                high = mid - 1;
             }
         }
 
-        System.out.println(-right-1);
+        System.out.println(-(low + 1));
 
     }
 }
