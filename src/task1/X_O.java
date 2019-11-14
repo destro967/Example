@@ -3,7 +3,7 @@ package task1;
 import javax.swing.*;
 import java.util.Scanner;
 
-public class calc {
+public class X_O {
 
     static int[][] ms;
 
@@ -103,6 +103,34 @@ public class calc {
 
     static boolean check() {
         boolean win = false;
+        for (int j = 0; j < ms.length; j++) {
+            for (int i = 0; i < ms.length - 1; i++) {
+                if (ms[i][j] == ms[i + 1][j] && ms[i][j] != -1) {
+                    win = true;
+                } else {
+                    win = false;
+                    break;
+                }
+            }
+        }
+
+        if (win)
+            return true;
+
+        for (int j = 0; j < ms.length; j++) {
+            for (int i = 0; i < ms.length - 1; i++) {
+                if (ms[j][i] == ms[j + 1][i] && ms[j][i] != -1) {
+                    win = true;
+                } else {
+                    win = false;
+                    break;
+                }
+            }
+        }
+
+        if (win)
+            return true;
+
         for (int j = 0; j < ms.length; j++) {
             for (int i = 0; i < ms.length - 1; i++) {
                 if (ms[i][j] == ms[i + 1][j] && ms[i][j] != -1) {
